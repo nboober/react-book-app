@@ -1,11 +1,16 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
+import { Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { Search } from './searchPage'
 
 class BooksApp extends React.Component {
 
   render() {
     return(
+  <div className="app">
+    <Route exact path="/" render={()=>(
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
@@ -48,7 +53,7 @@ class BooksApp extends React.Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">Ender's Game</div>
+                      <div className="book-title">Enders Game</div>
                       <div className="book-authors">Orson Scott Card</div>
                     </div>
                   </li>
@@ -91,7 +96,7 @@ class BooksApp extends React.Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">Harry Potter and the Sorcerer's Stone</div>
+                      <div className="book-title">Harry Potter and the Sorcerers Stone</div>
                       <div className="book-authors">J.K. Rowling</div>
                     </div>
                   </li>
@@ -134,7 +139,7 @@ class BooksApp extends React.Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">Oh, the Places You'll Go!</div>
+                      <div className="book-title">Oh, the Places Youll Go!</div>
                       <div className="book-authors">Seuss</div>
                     </div>
                   </li>
@@ -162,10 +167,16 @@ class BooksApp extends React.Component {
           </div>
         </div>
         <div className="open-search">
-          <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+          <Link to="/search" >Add a book></Link>
         </div>
       </div>
-    )}
+    )}/>
+        <Route path="/search" render={()=>(
+          <Search />
+        )}/>
+      </div>
+    )
   }
+}
 
 export default BooksApp
