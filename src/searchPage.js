@@ -16,11 +16,15 @@ export class Search extends React.Component{
     let books=this.props.books;
     console.log(books);
 
-    const bookList = books.map(function(i){
-      return `Authors: ${i.authors}`
+    const titles = books.map(function(i){
+      return `${i.title}`
     });
+    console.log(titles);
 
-    console.log(bookList);
+    const authors = books.map(function(i){
+      return `${i.authors}`
+    });
+    console.log(authors);
 
     return(
           <div className="search-books">
