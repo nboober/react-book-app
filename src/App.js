@@ -49,7 +49,7 @@ class BooksApp extends React.Component {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                
+
                 </ol>
               </div>
             </div>
@@ -61,7 +61,7 @@ class BooksApp extends React.Component {
       </div>
     )}/>
         <Route path="/search" render={()=>(
-          <Search />
+          <Search books={this.state.books} />
         )}/>
       </div>
     )

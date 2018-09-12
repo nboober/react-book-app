@@ -4,8 +4,24 @@ import './App.css'
 import { Link } from 'react-router-dom'
 
 export class Search extends React.Component{
-  
+  constructor(props) {
+    super(props);
+    this.state = {query: '',
+                  books: []
+                }
+  }
+
   render() {
+    //Holds the list of books gathered in App.js
+    let books=this.props.books;
+    console.log(books);
+
+    const bookList = books.map(function(i){
+      return `Authors: ${i.authors}`
+    });
+
+    console.log(bookList);
+
     return(
           <div className="search-books">
             <div className="search-books-bar">
