@@ -4,6 +4,7 @@ import './App.css'
 import { Link } from 'react-router-dom'
 
 export class Search extends React.Component{
+  
   render() {
     return(
           <div className="search-books">
@@ -23,7 +24,9 @@ export class Search extends React.Component{
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+
+              </ol>
             </div>
           </div>
       )
