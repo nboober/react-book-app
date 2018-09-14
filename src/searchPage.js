@@ -2,6 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import { Link } from 'react-router-dom'
+import { Book } from './Book'
 
 export class Search extends React.Component{
   constructor(props) {
@@ -26,6 +27,11 @@ export class Search extends React.Component{
     });
     console.log(authors);
 
+    const url = books.map(function(i){
+      return `${i.imageLinks}`
+    });
+    console.log(url);
+
     return(
           <div className="search-books">
             <div className="search-books-bar">
@@ -45,7 +51,7 @@ export class Search extends React.Component{
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-
+                <Book book={books} />
               </ol>
             </div>
           </div>
