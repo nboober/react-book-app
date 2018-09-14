@@ -7,8 +7,7 @@ import { Book } from './Book'
 export class Search extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {query: '',
-                  books: []
+    this.state = {query: ''
                 }
   }
 
@@ -16,21 +15,6 @@ export class Search extends React.Component{
     //Holds the list of books gathered in App.js
     let books=this.props.books;
     console.log(books);
-
-    const titles = books.map(function(i){
-      return `${i.title}`
-    });
-    console.log(titles);
-
-    const authors = books.map(function(i){
-      return `${i.authors}`
-    });
-    console.log(authors);
-
-    const url = books.map(function(i){
-      return `${i.imageLinks}`
-    });
-    console.log(url);
 
     return(
           <div className="search-books">
