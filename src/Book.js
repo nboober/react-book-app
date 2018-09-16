@@ -21,8 +21,10 @@ export class Book extends React.Component{
                       </div>
                     </div>
                     <div className="book-title">{i.title ? i.title : "No title available"}</div>
-                    <div className="book-authors">{i.authors ? i.authors : "No Author available"}</div>
-                  </div>
+                    {i.authors ? i.authors.map((author) => (
+                      <div className="book-authors" key={author}>{author}</div>
+                    )) : <div className="book-authors">No authors available</div>}
+                    </div>
                 </li>
               });
 
