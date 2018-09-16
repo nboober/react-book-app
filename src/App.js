@@ -6,18 +6,6 @@ import { Link } from 'react-router-dom'
 import { Search } from './searchPage'
 
 class BooksApp extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {books: []};
-  }
-
-  componentDidMount() {
-      BooksAPI.getAll().then((books) => {
-        this.setState({books})
-        console.log(this.state.books);
-        })
-    }
 
   render() {
     return(
@@ -61,7 +49,7 @@ class BooksApp extends React.Component {
       </div>
     )}/>
         <Route path="/search" render={()=>(
-          <Search books={this.state.books} />
+          <Search />
         )}/>
       </div>
     )
