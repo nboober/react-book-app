@@ -13,10 +13,7 @@ export class Search extends React.Component{
   }
 
   componentDidMount() {
-      BooksAPI.getAll().then((books) => {
-        this.setState({books: []})
-        console.log(this.state.books);
-        })
+      this.setState({books: this.props.books})
     }
 
     querySearch = (event) => {
@@ -34,8 +31,6 @@ export class Search extends React.Component{
     }
 
   render() {
-
-    let books=this.state.books;
 
     return(
           <div className="search-books">
@@ -56,7 +51,7 @@ export class Search extends React.Component{
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-                <Book book={books} />
+                <Book book={this.state.books} />
               </ol>
             </div>
           </div>
