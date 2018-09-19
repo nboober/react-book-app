@@ -9,7 +9,13 @@ import { BookShelf } from './bookShelf'
 class BooksApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {books: []}
+    this.state = {
+                books: [],
+                currentlyReading: [],
+                wantToRead: [],
+                read: [],
+                none: []
+              }
 
   }
 
@@ -20,12 +26,18 @@ class BooksApp extends React.Component {
         })
     }
 
+    changeShelf = (newBook, newShelf) => {
+      BooksAPI.update(newBook, newShelf).then(response => {
+
+      })
+    }
+
   render() {
     return(
   <div className="app">
     <Route exact path="/" render={()=>(
     <div>
-      <BookShelf books={this.state.books}/>
+      <BookShelf books={this.state.books} currentlyReading={this.state.currentlyReading} wantToRead={this.state.wantToRead} read={this.state.read}/>
       <div className="open-search">
         <Link to="/search" >Add a book></Link>
       </div>

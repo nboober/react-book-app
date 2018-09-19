@@ -1,27 +1,15 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
-import { Book } from './Book'
 
 export class BookShelf extends React.Component{
   constructor(props){
     super(props);
-    this.state={currentlyReading: [],
-                wantToRead: [],
-                read: [],
-                none: [],
-                books: []
-                }
+    this.state={books: []}
   }
 
   componentDidMount() {
       this.setState({books: this.props.books})
     }
-
-  changeShelf = (newBook, newShelf) => {
-    BooksAPI.update(newBook, newShelf).then(response => {
-
-    })
-  }
 
   render() {
 
@@ -36,7 +24,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.state.currentlyReading}
+                  {this.props.currentlyReading}
                 </ol>
               </div>
             </div>
@@ -44,7 +32,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.state.wantToRead}
+                  {this.props.wantToRead}
                 </ol>
               </div>
             </div>
@@ -52,7 +40,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.state.read}
+                  {this.props.read}
                 </ol>
               </div>
             </div>
