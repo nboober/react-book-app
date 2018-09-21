@@ -10,34 +10,34 @@ class BooksApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-                books: [],
-                currentlyReading: [],
-                wantToRead: [],
-                read: [],
-                none: []
+                books: []
               }
 
   }
 
   componentDidMount() {
       BooksAPI.getAll().then((books) => {
-        this.setState({books: []})
+        this.setState({
+                      books: []
+                    })
         console.log(this.state.books);
+
+        books.shelf= "none";
         })
     }
 
-    changeShelf = (newBook, newShelf) => {
-      BooksAPI.update(newBook, newShelf).then(response => {
+    changeShelf = (book, shelf) => {
+      BooksAPI.update(book, shelf).then(response => {
 
-      })
-    }
+    })
+  }
 
   render() {
     return(
   <div className="app">
     <Route exact path="/" render={()=>(
     <div>
-      <BookShelf books={this.state.books} currentlyReading={this.state.currentlyReading} wantToRead={this.state.wantToRead} read={this.state.read}/>
+      <BookShelf books={this.state.books}/>
       <div className="open-search">
         <Link to="/search" >Add a book></Link>
       </div>

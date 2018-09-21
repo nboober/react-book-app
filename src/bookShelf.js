@@ -24,7 +24,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.props.currentlyReading}
+                  {this.state.books.filter((book) => {return book.shelf === "currentlyReading"})}
                 </ol>
               </div>
             </div>
@@ -32,7 +32,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.props.wantToRead}
+                  {this.state.books.filter((book) => {return book.shelf === "wantToRead"})}
                 </ol>
               </div>
             </div>
@@ -40,7 +40,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.props.read}
+                  {this.state.books.filter((book) => {return book.shelf === "read"})}
                 </ol>
               </div>
             </div>

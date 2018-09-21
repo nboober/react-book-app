@@ -25,6 +25,7 @@ export class Book extends React.Component{
                       <div className="book-authors" key={author}>{author}</div>
                     )) : <div className="book-authors">No authors available</div>}
                     </div>
+                    <div>{i.shelf ? i.shelf : "Not on a Shelf"}</div>
                 </li>
               });
 
