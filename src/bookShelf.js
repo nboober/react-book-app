@@ -1,5 +1,6 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
+import { Book } from './Book'
 
 export class BookShelf extends React.Component{
   constructor(props){
@@ -24,7 +25,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.state.books.filter((book) => {return book.shelf === "currentlyReading"})}
+                  <Book onShelfUpdate={this.props.onShelfUpdate} books={this.props.currentlyReading}/>
                 </ol>
               </div>
             </div>
@@ -32,7 +33,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.state.books.filter((book) => {return book.shelf === "wantToRead"})}
+                  <Book onShelfUpdate={this.props.onShelfUpdate} books={this.props.wantToRead}/>
                 </ol>
               </div>
             </div>
@@ -40,7 +41,7 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.state.books.filter((book) => {return book.shelf === "read"})}
+                  <Book onShelfUpdate={this.props.onShelfUpdate} books={this.props.read}/>
                 </ol>
               </div>
             </div>

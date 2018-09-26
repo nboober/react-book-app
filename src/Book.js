@@ -2,16 +2,26 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 
 export class Book extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleChange=this.handleChange.bind(this);
+  }
+
+  handleChange = (event) => {
+
+      this.props.onShelfUpdate(this.props.books, event.target.value);
+    }
 
   render() {
 
-    let bookList=this.props.book.map(function(i, id){
+    let bookList=this.props.books.map(function(i, id){
+
       return  <li key={i.title + id}>
                   <div className="book">
                     <div className="book-top">
                       <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${i.imageLinks && i.imageLinks.thumbnail ? i.imageLinks.thumbnail : "No Image Available"})` }}></div>
                       <div className="book-shelf-changer">
-                        <select>
+                        <select onChange={event => this.handleChange(event)} value={i.shelf}>
                           <option value="move" disabled>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>

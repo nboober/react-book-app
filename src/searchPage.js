@@ -12,17 +12,13 @@ export class Search extends React.Component{
                 }
   }
 
-  componentDidMount() {
-      this.setState({books: this.props.books})
-    }
-
     querySearch = (event) => {
       let query = event.target.value.trim();
         this.setState({ query: query })
 
         if (query) {
           BooksAPI.search(query).then((books) => {
-            books.length > 0 ?  this.setState({books: books}) : this.setState({ books: []})
+            query.length > 0 ?  this.setState({books: books}) : this.setState({ books: []})
             console.log(this.state.books);
           })
 
@@ -51,7 +47,7 @@ export class Search extends React.Component{
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-                <Book book={this.state.books} />
+                <Book books={this.state.books} onShelfUpdate={this.props.onShelfUpdate}/>
               </ol>
             </div>
           </div>
