@@ -5,12 +5,8 @@ import { Book } from './Book'
 export class BookShelf extends React.Component{
   constructor(props){
     super(props);
-    this.state={books: []}
+    this.state={books: this.props.books}
   }
-
-  componentDidMount() {
-      this.setState({books: this.props.books})
-    }
 
   render() {
 

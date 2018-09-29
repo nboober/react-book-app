@@ -12,7 +12,6 @@ class BooksApp extends React.Component {
     this.state = {
                 books: [],
               }
-    // this.handleShelfUpdate=this.handleShelfUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -21,19 +20,18 @@ class BooksApp extends React.Component {
         })
     }
 
-        // handleShelfUpdate(book, shelf) {
-        //     let newShelf = shelf;
-        //     let newBook = book;
-        //
-        //     if (book.shelf !== shelf) {
-        //       BooksAPI.update(book, shelf).then(() => {
-        //         this.setState(state => ({
-        //           books: book
-        //         }));
-        //       });
-        //     }
-        //   }
+handleShelfUpdate = (book, newShelf) => {
+        BooksAPI.update(book, newShelf).then(() => {
+            // Update the local copy of the book
+            book.shelf = newShelf;
 
+            // Filter out the book and append it to the end of the list
+            // so it appears at the end of whatever shelf it was added to.
+            this.setState({
+                books: this.state.books.filter(b => b.id !== book.id).concat([ book ])
+            });
+        });
+    };
 
   render() {
 
@@ -53,7 +51,7 @@ class BooksApp extends React.Component {
     </div>
     )}/>
         <Route path="/search" render={()=>(
-          <Search books={this.state.books} onShelfUpdate={this.handleShelfUpdate} />
+          <Search books={this.state.books} onShelfUpdate={this.handleShelfUpdate}/>
         )}/>
       </div>
     )
