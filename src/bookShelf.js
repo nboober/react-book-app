@@ -8,6 +8,10 @@ export class BookShelf extends React.Component{
     this.state={books: this.props.books}
   }
 
+  componentDidMount() {
+      this.setState({books: this.props.books})
+    }
+
   render() {
 
     return(
@@ -21,7 +25,13 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <Book onShelfUpdate={this.props.onShelfUpdate} books={this.props.currentlyReading}/>
+                {
+                  this.props.books.filter(book => book.shelf === "currentlyReading").map((book) => (
+                    <li key={book.id}>
+                    <Book onShelfUpdate={this.props.onShelfUpdate} books={book}/>
+                    </li>
+                  ))
+                }
                 </ol>
               </div>
             </div>
@@ -29,7 +39,13 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <Book onShelfUpdate={this.props.onShelfUpdate} books={this.props.wantToRead}/>
+                {
+                  this.props.books.filter(book => book.shelf === "wantToRead").map((book) => (
+                    <li key={book.id}>
+                    <Book onShelfUpdate={this.props.onShelfUpdate} books={book}/>
+                    </li>
+                  ))
+                }
                 </ol>
               </div>
             </div>
@@ -37,7 +53,13 @@ export class BookShelf extends React.Component{
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <Book onShelfUpdate={this.props.onShelfUpdate} books={this.props.read}/>
+                {
+                  this.props.books.filter(book => book.shelf === "read").map((book) => (
+                    <li key={book.id}>
+                    <Book onShelfUpdate={this.props.onShelfUpdate} books={book}/>
+                    </li>
+                  ))
+                }
                 </ol>
               </div>
             </div>

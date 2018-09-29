@@ -35,16 +35,11 @@ handleShelfUpdate = (book, newShelf) => {
 
   render() {
 
-    const currentlyReading = this.state.books.filter(book => book.shelf === "currentlyReading");
-    const wantToRead = this.state.books.filter(book => book.shelf === "wantToRead");
-    const read = this.state.books.filter(book => book.shelf === "read");
-    const none = this.state.books.filter(book => book.shelf === "none");
-
     return(
   <div className="app">
     <Route exact path="/" render={()=>(
     <div>
-      <BookShelf books={this.state.books} onShelfUpdate={this.handleShelfUpdate} currentlyReading={currentlyReading} wantToRead={wantToRead} read={read} none={none}/>
+      <BookShelf books={this.state.books} onShelfUpdate={this.handleShelfUpdate}/>
       <div className="open-search">
         <Link to="/search" >Add a book></Link>
       </div>

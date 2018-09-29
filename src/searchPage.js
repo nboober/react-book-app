@@ -48,7 +48,13 @@ export class Search extends React.Component{
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-                <Book books={this.state.books} onShelfUpdate={this.props.onShelfUpdate}/>
+              {
+                this.state.books.map((book) => (
+                  <li key={book.id}>
+                  <Book onShelfUpdate={this.props.onShelfUpdate} books={book}/>
+                  </li>
+                ))
+              }
               </ol>
             </div>
           </div>
