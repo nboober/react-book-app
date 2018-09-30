@@ -3,6 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import { Link } from 'react-router-dom'
 import { Book } from './Book'
+import PropTypes from 'prop-types';
 
 export class Search extends React.Component{
   constructor(props) {
@@ -60,4 +61,7 @@ export class Search extends React.Component{
           </div>
       )
   }
+}
+Search.propTypes = {
+  onShelfUpdate: PropTypes.func.isRequired
 }

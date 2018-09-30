@@ -1,6 +1,7 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import { Book } from './Book'
+import PropTypes from 'prop-types';
 
 export class BookShelf extends React.Component{
   constructor(props){
@@ -68,4 +69,9 @@ export class BookShelf extends React.Component{
       </div>
     )
   }
+}
+
+BookShelf.propTypes = {
+  books: PropTypes.array.isRequired,
+  onShelfUpdate: PropTypes.func.isRequired
 }
