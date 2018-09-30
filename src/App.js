@@ -46,7 +46,7 @@ handleShelfUpdate = (book, newShelf) => {
     </div>
     )}/>
         <Route path="/search" render={()=>(
-          <Search books={this.state.books} onShelfUpdate={this.handleShelfUpdate}/>
+          <Search books={this.state.books} onShelfUpdate={this.handleShelfUpdate} />
         )}/>
       </div>
     )
