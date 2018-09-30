@@ -3,7 +3,26 @@ import * as BooksAPI from './BooksAPI'
 
 export class Book extends React.Component{
 
+  renderSwitch(shelf) {
+    switch(shelf){
+      case "currentlyReading":
+      return "Currently Reading";
+      break;
+    case "wantToRead":
+      return "Want to Read";
+      break;
+    case "read":
+      return "Read";
+      break;
+    default:
+      return "Not on a Shelf"
+      break;
+    }
+  }
+
   render() {
+
+    let shelf = this.props.books.shelf;
 
     return (
                   <div>
@@ -25,7 +44,7 @@ export class Book extends React.Component{
                           <div className="book-authors" key={author}>{author}</div>
                         )) : <div className="book-authors">No authors available</div>}
                         </div>
-                        <div>{this.props.books.shelf ? this.props.books.shelf : "Not on a Shelf"}</div>
+                        <div className="book-shelf-locator">{this.renderSwitch(shelf)}</div>
                     </div>
                 )
               }
