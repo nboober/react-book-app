@@ -14,12 +14,12 @@ export class Search extends React.Component{
   }
 
     querySearch = (event) => {
-      let query = event.target.value.trim();
-        this.setState({ query: query })
+      let query = event.target.value;
+        this.setState({ query })
 
         if (query) {
           BooksAPI.search(query, 5).then((books) => {
-            query.length > 0 ? this.setState({books}) : this.setState({ books: []})
+            books.length > 0 ? this.setState({books}) : this.setState({ books: []})
             console.log(this.state.books);
 
           })
@@ -43,7 +43,7 @@ export class Search extends React.Component{
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input type="text" placeholder="Search by title or author" onChange={this.querySearch}/>
+                <input type="text" placeholder="Search by title or author" onChange={this.querySearch} value={this.state.query}/>
 
               </div>
             </div>
