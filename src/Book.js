@@ -36,7 +36,7 @@ export class Book extends React.Component{
               thumbnail: PropTypes.string,
               shelf: PropTypes.string,
               onShelfUpdate: PropTypes.func.isRequired,
-              books: PropTypes.object.isRequired,
+              books: PropTypes.object,
               title: PropTypes.string,
               authors: PropTypes.string,
             }

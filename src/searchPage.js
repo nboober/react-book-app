@@ -9,23 +9,24 @@ export class Search extends React.Component{
   constructor(props) {
     super(props);
     this.state = {query: '',
-                  books: []
+                  books: ''
                 }
   }
 
     querySearch = (event) => {
       let query = event.target.value;
-        this.setState({ query })
+        this.setState({ query });
 
         if (query) {
           BooksAPI.search(query, 5).then((books) => {
+            this.setState({books: this.props.books.filter(b => b.id !== books.id).concat([ books ])})
             books.length > 0 ? this.setState({books}) : this.setState({ books: []})
             console.log(this.state.books);
 
           })
 
-        // if query is empty => reset state to default
-      } else this.setState({books: []})
+
+      }
     }
 
   render() {
@@ -49,12 +50,13 @@ export class Search extends React.Component{
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-              {
-                this.state.books.map((book) => (
+              {this.state.books.length !== 0 && this.state.query !== ''?
+                (this.state.books.map((book) => (
                   <li key={book.id}>
                   <Book onShelfUpdate={this.props.onShelfUpdate} books={book}/>
                   </li>
-                ))
+                ))) :
+                <h2>No Results Found</h2>
               }
               </ol>
             </div>
@@ -63,5 +65,6 @@ export class Search extends React.Component{
   }
 }
 Search.propTypes = {
-  onShelfUpdate: PropTypes.func.isRequired
+  onShelfUpdate: PropTypes.func.isRequired,
+  books: PropTypes.array
 }

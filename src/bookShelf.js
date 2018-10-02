@@ -53,6 +53,6 @@ export class BookShelf extends React.Component{
 }
 
 BookShelf.propTypes = {
-  books: PropTypes.array.isRequired,
+  books: PropTypes.array,
   onShelfUpdate: PropTypes.func.isRequired
 }
